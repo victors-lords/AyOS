@@ -22,23 +22,19 @@ jobs:
       - name: Setup Flutter SDK
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.3'
           channel: 'stable'
           cache: true
 
-      - name: Recreate Android Project Framework
+      - name: Recreate Clean Android Structure
         run: |
-          # Temiz android yapısı oluştur
           rm -rf android
-          flutter create --platforms=android --org com.ayos --project-name ayos .
-          # AndroidManifest içine izinleri ekle
-          sed -i '/<manifest/a \    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>' android/app/src/main/AndroidManifest.xml
+          flutter create --platforms=android --org com.victors.ayos --project-name ayos .
 
       - name: Get Dependencies
         run: flutter pub get
 
       - name: Build APK (Release)
-        run: flutter build apk --release
+        run: flutter build apk --release --no-tree-shake-icons
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
