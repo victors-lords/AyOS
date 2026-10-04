@@ -98,7 +98,7 @@ class _XMBHomeScreenState extends State<XMBHomeScreen>
   void _handleKeyEvent(RawKeyEvent event) {
     if (event is RawKeyDownEvent) {
       if (event.logicalKey == LogicalKeyboardKey.arrowLeft ||
-          event.logicalKey == LogicalKeyboardKey.dpadLeft) {
+          event.logicalKey == LogicalKeyboardKey.arrowLeft) {
         if (_selectedCategoryIndex > 0) {
           setState(() {
             _selectedCategoryIndex--;
@@ -106,7 +106,7 @@ class _XMBHomeScreenState extends State<XMBHomeScreen>
           });
         }
       } else if (event.logicalKey == LogicalKeyboardKey.arrowRight ||
-          event.logicalKey == LogicalKeyboardKey.dpadRight) {
+          event.logicalKey == LogicalKeyboardKey.arrowRight) {
         if (_selectedCategoryIndex < _categories.length - 1) {
           setState(() {
             _selectedCategoryIndex++;
@@ -114,14 +114,14 @@ class _XMBHomeScreenState extends State<XMBHomeScreen>
           });
         }
       } else if (event.logicalKey == LogicalKeyboardKey.arrowUp ||
-          event.logicalKey == LogicalKeyboardKey.dpadUp) {
+          event.logicalKey == LogicalKeyboardKey.arrowUp) {
         if (_selectedItemIndex > 0) {
           setState(() {
             _selectedItemIndex--;
           });
         }
       } else if (event.logicalKey == LogicalKeyboardKey.arrowDown ||
-          event.logicalKey == LogicalKeyboardKey.dpadDown) {
+          event.logicalKey == LogicalKeyboardKey.arrowDown) {
         final currentItems = _categories[_selectedCategoryIndex]['items'] as List<String>;
         if (_selectedItemIndex < currentItems.length - 1) {
           setState(() {
