@@ -22,13 +22,16 @@ jobs:
       - name: Setup Flutter SDK
         uses: subosito/flutter-action@v2
         with:
+          flutter-version: '3.24.3'
           channel: 'stable'
           cache: true
 
-      - name: Generate Android Scaffolding
+      - name: Recreate Android Project Framework
         run: |
+          # Temiz android yapısı oluştur
+          rm -rf android
           flutter create --platforms=android --org com.ayos --project-name ayos .
-          # Android 11+ için tüm uygulamaları görme izni (QUERY_ALL_PACKAGES) ekle
+          # AndroidManifest içine izinleri ekle
           sed -i '/<manifest/a \    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>' android/app/src/main/AndroidManifest.xml
 
       - name: Get Dependencies
