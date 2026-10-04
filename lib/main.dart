@@ -98,7 +98,7 @@ class _XMBHomeScreenState extends State<XMBHomeScreen>
   void _handleKeyEvent(RawKeyEvent event) {
     if (event is RawKeyDownEvent) {
       if (event.logicalKey == LogicalKeyboardKey.arrowLeft ||
-          event.logicalKey == LogicalKeyboardKey.gameButtonLeft) {
+          event.logicalKey == LogicalKeyboardKey.dpadLeft) {
         if (_selectedCategoryIndex > 0) {
           setState(() {
             _selectedCategoryIndex--;
@@ -106,7 +106,7 @@ class _XMBHomeScreenState extends State<XMBHomeScreen>
           });
         }
       } else if (event.logicalKey == LogicalKeyboardKey.arrowRight ||
-          event.logicalKey == LogicalKeyboardKey.gameButtonRight) {
+          event.logicalKey == LogicalKeyboardKey.dpadRight) {
         if (_selectedCategoryIndex < _categories.length - 1) {
           setState(() {
             _selectedCategoryIndex++;
@@ -114,14 +114,14 @@ class _XMBHomeScreenState extends State<XMBHomeScreen>
           });
         }
       } else if (event.logicalKey == LogicalKeyboardKey.arrowUp ||
-          event.logicalKey == LogicalKeyboardKey.gameButtonUp) {
+          event.logicalKey == LogicalKeyboardKey.dpadUp) {
         if (_selectedItemIndex > 0) {
           setState(() {
             _selectedItemIndex--;
           });
         }
       } else if (event.logicalKey == LogicalKeyboardKey.arrowDown ||
-          event.logicalKey == LogicalKeyboardKey.gameButtonDown) {
+          event.logicalKey == LogicalKeyboardKey.dpadDown) {
         final currentItems = _categories[_selectedCategoryIndex]['items'] as List<String>;
         if (_selectedItemIndex < currentItems.length - 1) {
           setState(() {
